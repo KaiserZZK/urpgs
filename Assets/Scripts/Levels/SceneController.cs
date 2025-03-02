@@ -41,6 +41,7 @@ public class SceneController : MonoBehaviour
     
     IEnumerator LoadSpecifiedScene(string sceneName)
     {
+        // TODO: @zk when going back to room0 from others, shouldn't spawn at start position but near exit instead
         transitionAnimator.SetTrigger("End");
         yield return new WaitForSeconds(1);
         SceneManager.LoadSceneAsync(sceneName);

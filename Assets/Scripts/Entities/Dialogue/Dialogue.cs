@@ -13,6 +13,7 @@ public class DialogueOption
     public string optionText;
     public string speaker;
     public string dialogueLines;
+    public string shouldChangeScene;
 }
 
 [System.Serializable]

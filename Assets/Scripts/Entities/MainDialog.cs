@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class MainDialog : MonoBehaviour
 {
     public GameObject dialoguePanel;
     public TextMeshProUGUI dialogueText;
     public TextMeshProUGUI speakerText;
+    public TextMeshProUGUI nextLineHint;
 
     public Transform optionsPanel;
     public GameObject optionButtonPrefab;
@@ -44,6 +46,7 @@ public class MainDialog : MonoBehaviour
             // press E to trigger, continue and exit conversation
             if (Input.GetKeyDown(KeyCode.E))
             {
+                nextLineHint.gameObject.SetActive(true);
                 if (optionsDisplayed)
                 {
                     optionsDisplayed = false;
@@ -101,7 +104,7 @@ public class MainDialog : MonoBehaviour
         {
             CheckInteractionCondition();
             dialoguePanel.SetActive(true);
-            typingCoroutine = StartCoroutine(Typing());
+            typingCoroutine = StartCoroutine(Typing(currentDialogue.lines.Length > 1));
         }
         else if (dialogueText.text == currentDialogue.lines[index].content)
         {
@@ -134,6 +137,16 @@ public class MainDialog : MonoBehaviour
                     currentDialogue = defaultDialogue;
                 }
                 break;
+            case "Exit":
+                if (GameManager.instance.interactedWithToaster && GameManager.instance.interactedWithPapers)
+                {
+                    currentDialogue = conditionalDialogue;
+                }
+                else
+                {
+                    currentDialogue = defaultDialogue;
+                }
+                break;
             // Add more cases for other interaction conditions
             default:
                 currentDialogue = defaultDialogue;
@@ -157,8 +170,13 @@ public class MainDialog : MonoBehaviour
         isFastTyping = false;
     }
 
-    IEnumerator Typing()
+    IEnumerator Typing(bool hasNextLine)
     {
+        if (!hasNextLine)
+        {
+            nextLineHint.gameObject.SetActive(false);
+        }
+        
         dialogueText.text = "";
         speakerText.text = currentDialogue.lines[index].speaker;
         foreach (char letter in currentDialogue.lines[index].content.ToCharArray())
@@ -167,12 +185,12 @@ public class MainDialog : MonoBehaviour
             yield return new WaitForSeconds(isFastTyping ? fastWordSpeed : wordSpeed);
         }
         isFastTyping = false;
+        
 
         // if there's options, show options here:
         if (currentDialogue.lines[index].hasOptions) {
             DisplayOptions(currentDialogue.lines[index].options);
             optionsDisplayed = true;
-            Debug.Log("option display called");
         }
         MarkAsInteracted();
     }
@@ -201,26 +219,37 @@ public class MainDialog : MonoBehaviour
 
     IEnumerator OnOptionSelected(DialogueOption option)
     {
-        Debug.Log("function called");
         dialogueText.text = "";
         speakerText.text = option.speaker;
-       foreach (char letter in option.dialogueLines.ToCharArray())
+        foreach (char letter in option.dialogueLines.ToCharArray())
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(isFastTyping ? fastWordSpeed : wordSpeed);
         }
         isFastTyping = false;
+        
+        // option-handling logics
+        if (option.shouldChangeScene != "")
+        {
+            // TODO @zk change to an actual scene
+            // TODO @zk fix scene transition effect
+            SceneController.sceneInstance.GoSpecifiedScene(option.shouldChangeScene);
+        }
+        
+        // defaulting behavior to do nothing & show next line 
+        NextLine();
     }
 
     public void NextLine()
     {
         if (index < currentDialogue.lines.Length - 1)
         {
+            bool hasNextLine = (index < currentDialogue.lines.Length - 2);
             index++;
             dialogueText.text = "";
             speakerText.text = "";
             optionsPanel.gameObject.SetActive(false);
-            typingCoroutine = StartCoroutine(Typing());
+            typingCoroutine = StartCoroutine(Typing(hasNextLine));
         }
         else
         {

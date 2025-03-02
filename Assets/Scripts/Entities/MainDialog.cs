@@ -41,6 +41,17 @@ public class MainDialog : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        // status (current objectives, known rules)-related
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            // @zk to create actual UI later 
+            Debug.Log("temp UI: =============");
+            Debug.Log("current objectives: ##");
+            Debug.Log("found rules: @@@@@@@@@");
+        }
+        
+        // dialogue-related
         if (playerIsClose)
         {
             // press E to trigger, continue and exit conversation
@@ -231,7 +242,6 @@ public class MainDialog : MonoBehaviour
         // option-handling logics
         if (option.shouldChangeScene != "")
         {
-            // TODO @zk change to an actual scene
             // TODO @zk fix scene transition effect
             SceneController.sceneInstance.GoSpecifiedScene(option.shouldChangeScene);
         }

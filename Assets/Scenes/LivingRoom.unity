@@ -1287,8 +1287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dungeon: {fileID: 0}
   collectedNotebook: 0
-  interactedWithToaster: 0
-  interactedWithPapers: 0
+  checkedTerminal: 0
 --- !u!4 &690294149
 Transform:
   m_ObjectHideFlags: 0
@@ -6800,8 +6799,7 @@ MonoBehaviour:
   optionButtonPrefab: {fileID: 0}
   defaultDialogue:
     lines: []
-  conditionalDialogue:
-    lines: []
+  conditionalDialogues: []
   visualCue: {fileID: 0}
   wordSpeed: 0
   fastWordSpeed: 0
@@ -7386,8 +7384,7 @@ MonoBehaviour:
       content: I can open it with (R) when I feel like reading it.
       hasOptions: 1
       options: []
-  conditionalDialogue:
-    lines: []
+  conditionalDialogues: []
   visualCue: {fileID: 1530892952}
   wordSpeed: 0.05
   fastWordSpeed: 0.01
@@ -7472,27 +7469,23 @@ MonoBehaviour:
   defaultDialogue:
     lines:
     - speaker: Morphy
-      content: Seems to be an exit.
+      content: Don't think I'd wanna leave without at least having some information...
       hasOptions: 0
       options: []
+  conditionalDialogues:
+  - lines:
     - speaker: Morphy
-      content: Take the exit?
+      content: Seems to be a door; not sure where it leads to though.
       hasOptions: 1
       options:
-      - optionText: Yes
-        speaker: 
-        dialogueLines: 
-        shouldChangeScene: corridor1
-      - optionText: No
+      - optionText: Use door
         speaker: 
         dialogueLines: 
         shouldChangeScene: 
-  conditionalDialogue:
-    lines:
-    - speaker: Morphy
-      content: Don't think I want to use the exit now...
-      hasOptions: 0
-      options: []
+      - optionText: Nevermind
+        speaker: 
+        dialogueLines: 
+        shouldChangeScene: 
   visualCue: {fileID: 1530892952}
   wordSpeed: 0.05
   fastWordSpeed: 0.01
@@ -7688,25 +7681,25 @@ MonoBehaviour:
   defaultDialogue:
     lines:
     - speaker: Morphy
-      content: A standard issue terminal from the Institute, where I usually receive
-        important updates.
+      content: Seems to be some sort of terminal... I only have vague memories of
+        how to use that.
       hasOptions: 0
       options: []
     - speaker: Morphy
-      content: Better find my notebook first before checking on that...
+      content: My notebook should help--better find that first before doing anything.
       hasOptions: 0
       options: []
-  conditionalDialogue:
-    lines:
+  conditionalDialogues:
+  - lines:
     - speaker: Morphy
-      content: Check terminal for  updates?
+      content: A standard-issue terminal from the Institute, check for updates?
       hasOptions: 1
       options:
-      - optionText: Sure.
+      - optionText: Sure!
         speaker: 
         dialogueLines: 
         shouldChangeScene: 
-      - optionText: Not now...
+      - optionText: Not now.
         speaker: 
         dialogueLines: 
         shouldChangeScene: 
@@ -9545,8 +9538,7 @@ MonoBehaviour:
   optionButtonPrefab: {fileID: 0}
   defaultDialogue:
     lines: []
-  conditionalDialogue:
-    lines: []
+  conditionalDialogues: []
   visualCue: {fileID: 0}
   wordSpeed: 0
   fastWordSpeed: 0

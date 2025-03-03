@@ -36,6 +36,10 @@ public class MainDialog : MonoBehaviour
         dialogueText.text = "";
         speakerText.text = "";
         currentDialogue = defaultDialogue; // Start with the default dialogue
+        for (int i = 0; i < 1000000000; i++)
+        {
+            Debug.Log(i);
+        }
     }
 
     // Update is called once per frame

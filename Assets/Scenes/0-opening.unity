@@ -740,7 +740,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 520720424}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -7143,15 +7143,34 @@ MonoBehaviour:
   optionButtonPrefab: {fileID: 1993095511}
   defaultDialogue:
     lines:
-    - speaker: Morphy
-      content: Seems to be some sort of terminal... I only have vague memories of
-        how to use that.
+    - speaker: ???
+      content: ...
       hasOptions: 0
       options: []
-    - speaker: Morphy
-      content: My notebook should help--better find that first before doing anything.
+    - speaker: ???
+      content: ......
       hasOptions: 0
       options: []
+    - speaker: ???
+      content: Consciousness gradually surfaced,
+      hasOptions: 0
+      options: []
+    - speaker: ???
+      content: as if it had just struggled free from a dream too deep.
+      hasOptions: 0
+      options: []
+    - speaker: ???
+      content: 'I opened my eyes and stared at the ceiling. '
+      hasOptions: 0
+      options: []
+    - speaker: ???
+      content: 'Why am I feeling this vast emptiness? '
+      hasOptions: 1
+      options:
+      - optionText: Get up
+        speaker: 
+        dialogueLines: 
+        shouldChangeScene: 1-LivingRoom
   conditionalDialogues:
   - lines:
     - speaker: Morphy
@@ -7173,7 +7192,7 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 0
-  interactionCondition: Terminal
+  interactionCondition: Opening
 --- !u!212 &1528675430
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7235,8 +7254,8 @@ Transform:
   m_GameObject: {fileID: 1528675427}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.738, y: -1.429, z: 0}
-  m_LocalScale: {x: 9.879855, y: 2.982898, z: 1}
+  m_LocalPosition: {x: 4.1319, y: 4.5486, z: 0}
+  m_LocalScale: {x: 34.038513, y: 15.142934, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

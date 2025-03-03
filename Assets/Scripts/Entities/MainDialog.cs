@@ -33,6 +33,7 @@ public class MainDialog : MonoBehaviour
     public string interactionCondition; // specify condition
 
     private bool isCgScene ;
+    private bool firstDialoguePlayed = false;
     // TODO: bool for character move
     
     void Start()
@@ -41,6 +42,12 @@ public class MainDialog : MonoBehaviour
         speakerText.text = "";
         currentDialogue = defaultDialogue; // Start with the default dialogue
         isCgScene = SceneController.sceneInstance.cgScenes.Contains(SceneManager.GetActiveScene().name);
+        
+        if (isCgScene)
+        {
+            firstDialoguePlayed = true; // Skip the first manual E press
+            TriggerConversation(); // Autoplay first dialogue line
+        }
     }
 
     // Update is called once per frame
@@ -62,7 +69,22 @@ public class MainDialog : MonoBehaviour
                 }
                 else
                 {
-                    TriggerConversation();
+                    if (isCgScene)
+                    {
+                        if (!firstDialoguePlayed)
+                        {
+                            firstDialoguePlayed = true; // Set flag so first press is skipped
+                            TriggerConversation();
+                        }
+                        else
+                        {
+                            NextLine();
+                        }
+                    }
+                    else
+                    {
+                        TriggerConversation();
+                    }
                 }
             }
 
@@ -132,17 +154,18 @@ public class MainDialog : MonoBehaviour
         switch (interactionCondition)
         {
             case "Notebook":
+                MarkAsInteracted();
                 break;
             case "Terminal":
                 if (GameManager.instance.collectedNotebook)
                 {
                     currentDialogue = conditionalDialogues[0];
+                    MarkAsInteracted();
                 }
                 else
                 {
                     currentDialogue = defaultDialogue;
                 }
-
                 break;
             case "Exit":
                 if (GameManager.instance.checkedTerminal)
@@ -160,7 +183,6 @@ public class MainDialog : MonoBehaviour
                 break;
             // Add more cases for other interaction conditions
             default:
-                Debug.Log("default case triggerd");
                 currentDialogue = defaultDialogue;
                 break;
 

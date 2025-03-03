@@ -16,9 +16,8 @@ public class GameManager : MonoBehaviour
 
     // Sequential progression
     public bool collectedNotebook = false;
-    public bool interactedWithToaster = false;
-    public bool interactedWithPapers = false;
-
+    public bool checkedTerminal = false;
+    
     void Awake()
     {
         if (instance == null)

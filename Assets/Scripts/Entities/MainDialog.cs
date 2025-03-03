@@ -15,7 +15,7 @@ public class MainDialog : MonoBehaviour
     public Transform optionsPanel;
     public GameObject optionButtonPrefab;
     public Dialogue defaultDialogue;
-    public Dialogue conditionalDialogue;
+    public Dialogue[] conditionalDialogues;
     private Dialogue currentDialogue;
     private int index = 0;
     [SerializeField] private GameObject visualCue; // set up for the visual cue of interaction
@@ -128,33 +128,12 @@ public class MainDialog : MonoBehaviour
     {
         switch (interactionCondition)
         {
-            // case "Sink":
-            //     if (GameManager.instance.interactedWithToaster)
-            //     {
-            //         currentDialogue = conditionalDialogue;
-            //     }
-            //     else
-            //     {
-            //         currentDialogue = defaultDialogue;
-            //     }
-            //     break;
-            // case "Plant":
-            //     if (GameManager.instance.interactedWithToaster && GameManager.instance.interactedWithPapers)
-            //     {
-            //         currentDialogue = conditionalDialogue;
-            //     }
-            //     else
-            //     {
-            //         currentDialogue = defaultDialogue;
-            //     }
-            //     break;
             case "Notebook":
-                GameManager.instance.collectedNotebook = true;
                 break;
             case "Terminal":
                 if (GameManager.instance.collectedNotebook)
                 {
-                    currentDialogue = conditionalDialogue;
+                    currentDialogue = conditionalDialogues[0];
                 }
                 else
                 {
@@ -163,10 +142,13 @@ public class MainDialog : MonoBehaviour
 
                 break;
             case "Exit":
-                // TODO @zk can add more meaningful conditions here for exit
-                if (GameManager.instance.interactedWithToaster && GameManager.instance.interactedWithPapers)
+                if (GameManager.instance.checkedTerminal)
                 {
-                    currentDialogue = conditionalDialogue;
+                    // TODO @zk could add a known vs. unknown state as to where the door leads to
+                    if (true)
+                    {
+                        currentDialogue = conditionalDialogues[0]; // Destination unknown
+                    }
                 }
                 else
                 {
@@ -306,12 +288,11 @@ public class MainDialog : MonoBehaviour
     {
         switch (interactionCondition)
         {
-            case "Toaster":
-                GameManager.instance.interactedWithToaster = true;
+            case "Notebook":
+                GameManager.instance.collectedNotebook = true;
                 break;
-            // Add more cases for other interactions
-            case "Papers":
-                GameManager.instance.interactedWithPapers = true;
+            case "Terminal":
+                GameManager.instance.checkedTerminal = true;
                 break;
         }
     }

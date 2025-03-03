@@ -6885,6 +6885,7 @@ MonoBehaviour:
   interactionCondition: 
   dialogueCgCanvas: {fileID: 0}
   dialogueCgSpirte: {fileID: 0}
+  notebookInteractable: {fileID: 0}
 --- !u!114 &1078265867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7496,6 +7497,7 @@ MonoBehaviour:
   interactionCondition: Notebook
   dialogueCgCanvas: {fileID: 952093179}
   dialogueCgSpirte: {fileID: 21300000, guid: b9a79670921f74b4cb1e63d437bddfdb, type: 3}
+  notebookInteractable: {fileID: 1410386458}
 --- !u!70 &1410386463
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -7599,6 +7601,7 @@ MonoBehaviour:
   interactionCondition: Exit
   dialogueCgCanvas: {fileID: 0}
   dialogueCgSpirte: {fileID: 0}
+  notebookInteractable: {fileID: 0}
 --- !u!61 &1424030110
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7818,6 +7821,7 @@ MonoBehaviour:
   interactionCondition: Terminal
   dialogueCgCanvas: {fileID: 0}
   dialogueCgSpirte: {fileID: 0}
+  notebookInteractable: {fileID: 1410386458}
 --- !u!212 &1528675430
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9657,6 +9661,7 @@ MonoBehaviour:
   interactionCondition: 
   dialogueCgCanvas: {fileID: 0}
   dialogueCgSpirte: {fileID: 0}
+  notebookInteractable: {fileID: 0}
 --- !u!114 &2014537160
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -36,6 +36,9 @@ public class MainDialog : MonoBehaviour
 
     private bool isCgScene ;
     private bool firstDialoguePlayed = false;
+
+    public GameObject notebookInteractable; // Assign in the Inspector
+    private bool hasNotebook = false;
     // TODO: bool for character move
     
     void Start()
@@ -126,13 +129,12 @@ public class MainDialog : MonoBehaviour
             {
                 isFastTyping = true;
             }
-            
-            // status (current objectives, known rules)-related
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                // @zk to create actual UI later 
-                Debug.Log("showing notebook content");
-            }
+
+        }
+        
+        if (hasNotebook && Input.GetKeyDown(KeyCode.R))
+        {
+            Debug.Log("Showing notebook content...");
         }
     }
 
@@ -143,7 +145,7 @@ public class MainDialog : MonoBehaviour
             CheckInteractionCondition();
             dialoguePanel.SetActive(true);
             
-            // TODO @zk BONUS: add index-specific CG
+            // TODO @zk BONUS: make index-specific (CG only showing during specific sentences in dialogue)
             // Show CG if available
             if (dialogueCgCanvas != null && dialogueCgSpirte != null)
             {
@@ -227,6 +229,12 @@ public class MainDialog : MonoBehaviour
             Color cgColor = dialogueCgCanvas.color;
             cgColor.a = 0f;
             dialogueCgCanvas.color = cgColor;
+        }
+        
+        // 
+        if (hasNotebook && notebookInteractable != null)
+        {
+            GameManager.instance.checkedTerminal = true;
         }
         
     }
@@ -345,6 +353,7 @@ public class MainDialog : MonoBehaviour
         {
             case "Notebook":
                 GameManager.instance.collectedNotebook = true;
+                hasNotebook = true; // Mark that notebook is collected
                 break;
             case "Terminal":
                 GameManager.instance.checkedTerminal = true;

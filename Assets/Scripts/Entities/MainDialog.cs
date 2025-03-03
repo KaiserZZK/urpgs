@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class MainDialog : MonoBehaviour
 {
@@ -29,34 +31,24 @@ public class MainDialog : MonoBehaviour
     private bool optionsDisplayed = false; // flag to check if options are displayed
 
     public string interactionCondition; // specify condition
-    // TODO: bool for character move
 
+    private bool isCgScene ;
+    // TODO: bool for character move
+    
     void Start()
     {
         dialogueText.text = "";
         speakerText.text = "";
         currentDialogue = defaultDialogue; // Start with the default dialogue
-        for (int i = 0; i < 1000000000; i++)
-        {
-            Debug.Log(i);
-        }
+        isCgScene = SceneController.sceneInstance.cgScenes.Contains(SceneManager.GetActiveScene().name);
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        // status (current objectives, known rules)-related
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            // @zk to create actual UI later 
-            Debug.Log("temp UI: =============");
-            Debug.Log("current objectives: ##");
-            Debug.Log("found rules: @@@@@@@@@");
-        }
-        
         // dialogue-related
-        if (playerIsClose)
+        if (isCgScene || playerIsClose)
         {
             // press E to trigger, continue and exit conversation
             if (Input.GetKeyDown(KeyCode.E))
@@ -109,6 +101,13 @@ public class MainDialog : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.P))
             {
                 isFastTyping = true;
+            }
+            
+            // status (current objectives, known rules)-related
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                // @zk to create actual UI later 
+                Debug.Log("showing notebook content");
             }
         }
     }
@@ -273,7 +272,10 @@ public class MainDialog : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            visualCue.SetActive(true);
+            if (!isCgScene)
+            {
+                visualCue.SetActive(true);
+            }
             playerIsClose = true;
         }
     }

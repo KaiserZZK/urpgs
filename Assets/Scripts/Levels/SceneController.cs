@@ -7,6 +7,8 @@ public class SceneController : MonoBehaviour
 {
     public static SceneController sceneInstance;
     [SerializeField] Animator transitionAnimator;
+    
+    public HashSet<string> cgScenes = new HashSet<string>();
 
     private void Awake()
     {
@@ -19,6 +21,7 @@ public class SceneController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        cgScenes.Add("0-opening");
     }
     
     public void GoNextScene()

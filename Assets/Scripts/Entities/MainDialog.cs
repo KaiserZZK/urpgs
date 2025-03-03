@@ -142,6 +142,20 @@ public class MainDialog : MonoBehaviour
         {
             CheckInteractionCondition();
             dialoguePanel.SetActive(true);
+            
+            // TODO @zk BONUS: add index-specific CG
+            // Show CG if available
+            if (dialogueCgCanvas != null && dialogueCgSpirte != null)
+            {
+                dialogueCgCanvas.enabled = true; // Enable Image component
+                dialogueCgCanvas.sprite = dialogueCgSpirte;
+            
+                // Set alpha to fully visible
+                Color cgColor = dialogueCgCanvas.color;
+                cgColor.a = 1f; 
+                dialogueCgCanvas.color = cgColor;
+            }
+            
             typingCoroutine = StartCoroutine(Typing(currentDialogue.lines.Length > 1));
         }
         else if (dialogueText.text == currentDialogue.lines[index].content)
@@ -204,6 +218,17 @@ public class MainDialog : MonoBehaviour
         dialoguePanel.SetActive(false);
         optionsPanel.gameObject.SetActive(false); // Deactivate options panel
         isFastTyping = false;
+        
+        // Hide CG when dialogue is closed
+        if (dialogueCgCanvas != null)
+        {
+            dialogueCgCanvas.gameObject.SetActive(false);
+            // Set alpha to fully transparent
+            Color cgColor = dialogueCgCanvas.color;
+            cgColor.a = 0f;
+            dialogueCgCanvas.color = cgColor;
+        }
+        
     }
 
     IEnumerator Typing(bool hasNextLine)

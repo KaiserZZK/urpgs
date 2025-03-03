@@ -37,8 +37,7 @@ public class MainDialog : MonoBehaviour
     private bool isCgScene ;
     private bool firstDialoguePlayed = false;
 
-    public GameObject notebookInteractable; // Assign in the Inspector
-    private bool hasNotebook = false;
+    public GameObject notebookInteractable;
     // TODO: bool for character move
     
     void Start()
@@ -132,10 +131,6 @@ public class MainDialog : MonoBehaviour
 
         }
         
-        if (hasNotebook && Input.GetKeyDown(KeyCode.R))
-        {
-            Debug.Log("Showing notebook content...");
-        }
     }
 
     void TriggerConversation()
@@ -149,7 +144,7 @@ public class MainDialog : MonoBehaviour
             // Show CG if available
             if (dialogueCgCanvas != null && dialogueCgSpirte != null)
             {
-                dialogueCgCanvas.enabled = true; // Enable Image component
+                dialogueCgCanvas.gameObject.SetActive(true);
                 dialogueCgCanvas.sprite = dialogueCgSpirte;
             
                 // Set alpha to fully visible
@@ -231,10 +226,10 @@ public class MainDialog : MonoBehaviour
             dialogueCgCanvas.color = cgColor;
         }
         
-        // 
-        if (hasNotebook && notebookInteractable != null)
+        if (GameManager.instance.collectedNotebook)
         {
-            GameManager.instance.checkedTerminal = true;
+            notebookInteractable.gameObject.SetActive(false);
+            
         }
         
     }
@@ -353,7 +348,6 @@ public class MainDialog : MonoBehaviour
         {
             case "Notebook":
                 GameManager.instance.collectedNotebook = true;
-                hasNotebook = true; // Mark that notebook is collected
                 break;
             case "Terminal":
                 GameManager.instance.checkedTerminal = true;

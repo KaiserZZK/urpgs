@@ -21,7 +21,7 @@ public class SceneController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        cgScenes.Add("0-opening");
+        cgScenes.Add("0-Opening");
     }
     
     public void GoNextScene()

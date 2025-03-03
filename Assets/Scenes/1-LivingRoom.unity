@@ -7481,7 +7481,7 @@ MonoBehaviour:
       - optionText: Use door
         speaker: 
         dialogueLines: 
-        shouldChangeScene: 
+        shouldChangeScene: 2-Pantry
       - optionText: Nevermind
         speaker: 
         dialogueLines: 

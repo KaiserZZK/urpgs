@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public Dungeon dungeon;
 
     // Sequential progression
+    public bool collectedNotebook = false;
     public bool interactedWithToaster = false;
     public bool interactedWithPapers = false;
 

@@ -128,18 +128,31 @@ public class MainDialog : MonoBehaviour
     {
         switch (interactionCondition)
         {
-            case "Sink":
-                if (GameManager.instance.interactedWithToaster)
-                {
-                    currentDialogue = conditionalDialogue;
-                }
-                else
-                {
-                    currentDialogue = defaultDialogue;
-                }
+            // case "Sink":
+            //     if (GameManager.instance.interactedWithToaster)
+            //     {
+            //         currentDialogue = conditionalDialogue;
+            //     }
+            //     else
+            //     {
+            //         currentDialogue = defaultDialogue;
+            //     }
+            //     break;
+            // case "Plant":
+            //     if (GameManager.instance.interactedWithToaster && GameManager.instance.interactedWithPapers)
+            //     {
+            //         currentDialogue = conditionalDialogue;
+            //     }
+            //     else
+            //     {
+            //         currentDialogue = defaultDialogue;
+            //     }
+            //     break;
+            case "Notebook":
+                GameManager.instance.collectedNotebook = true;
                 break;
-            case "Plant":
-                if (GameManager.instance.interactedWithToaster && GameManager.instance.interactedWithPapers)
+            case "Terminal":
+                if (GameManager.instance.collectedNotebook)
                 {
                     currentDialogue = conditionalDialogue;
                 }
@@ -147,8 +160,10 @@ public class MainDialog : MonoBehaviour
                 {
                     currentDialogue = defaultDialogue;
                 }
+
                 break;
             case "Exit":
+                // TODO @zk can add more meaningful conditions here for exit
                 if (GameManager.instance.interactedWithToaster && GameManager.instance.interactedWithPapers)
                 {
                     currentDialogue = conditionalDialogue;
@@ -160,6 +175,7 @@ public class MainDialog : MonoBehaviour
                 break;
             // Add more cases for other interaction conditions
             default:
+                Debug.Log("default case triggerd");
                 currentDialogue = defaultDialogue;
                 break;
 

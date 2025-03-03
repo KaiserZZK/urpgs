@@ -6691,6 +6691,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &952093177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 952093178}
+  - component: {fileID: 952093180}
+  - component: {fileID: 952093179}
+  m_Layer: 5
+  m_Name: CG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &952093178
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952093177}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1847874684}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -3.4879916, y: -3}
+  m_SizeDelta: {x: 1060, y: 600}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &952093179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952093177}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &952093180
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952093177}
+  m_CullTransparentMesh: 1
 --- !u!1 &1071315534
 GameObject:
   m_ObjectHideFlags: 0
@@ -6808,6 +6883,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   interactionCondition: 
+  dialogueCgCanvas: {fileID: 0}
+  dialogueCgSpirte: {fileID: 0}
 --- !u!114 &1078265867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7276,7 +7353,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.112722754, y: -0.10821378}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -7287,7 +7364,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.7745545, y: 0.94589305}
   m_EdgeRadius: 0
 --- !u!212 &1410386460
 SpriteRenderer:
@@ -7350,7 +7427,7 @@ Transform:
   m_GameObject: {fileID: 1410386458}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.95, y: -2, z: 0}
+  m_LocalPosition: {x: 4.41, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7377,12 +7454,36 @@ MonoBehaviour:
   defaultDialogue:
     lines:
     - speaker: Morphy
-      content: I've found my notebook!
+      content: My notebook. Here it is.
       hasOptions: 0
       options: []
     - speaker: Morphy
-      content: I can open it with (R) when I feel like reading it.
-      hasOptions: 1
+      content: "This emblem always makes me recall receiving that assignment letter
+        at my university\u2019s office\u2014"
+      hasOptions: 0
+      options: []
+    - speaker: Morphy
+      content: 'to develop an intelligent system for strategic planning for the government. '
+      hasOptions: 0
+      options: []
+    - speaker: Morphy
+      content: I remember my composed response, and my inner ecstasy concealed by
+        it.
+      hasOptions: 0
+      options: []
+    - speaker: Morphy
+      content: My dream (or obsession?) could finally materialize with resources
+        of a national institution.
+      hasOptions: 0
+      options: []
+    - speaker: Morphy
+      content: "\u2026 The Institute of Control and Optimization Sciences. My life\u2019s
+        meaning depends on my research HERE."
+      hasOptions: 0
+      options: []
+    - speaker: Morphy
+      content: I can open my notebook with (R) when I feel like reading it.
+      hasOptions: 0
       options: []
   conditionalDialogues: []
   visualCue: {fileID: 1530892952}
@@ -7393,6 +7494,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   interactionCondition: Notebook
+  dialogueCgCanvas: {fileID: 952093179}
+  dialogueCgSpirte: {fileID: 21300000, guid: dcdc9acbd2ba94d5b8e71af74e06ee40, type: 3}
 --- !u!70 &1410386463
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -7494,6 +7597,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   interactionCondition: Exit
+  dialogueCgCanvas: {fileID: 0}
+  dialogueCgSpirte: {fileID: 0}
 --- !u!61 &1424030110
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7711,6 +7816,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   interactionCondition: Terminal
+  dialogueCgCanvas: {fileID: 0}
+  dialogueCgSpirte: {fileID: 0}
 --- !u!212 &1528675430
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7772,7 +7879,7 @@ Transform:
   m_GameObject: {fileID: 1528675427}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: -0.82, z: 0}
+  m_LocalPosition: {x: 3, y: -1.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7810,7 +7917,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.61342084}
+  m_Offset: {x: -0.01803577, y: -0.3834666}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -7821,7 +7928,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.8580806}
+  m_Size: {x: 0.96392846, y: 1.3981721}
   m_EdgeRadius: 0
 --- !u!1 &1530892952
 GameObject:
@@ -8942,6 +9049,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 952093178}
   - {fileID: 1993095512}
   - {fileID: 2014537158}
   - {fileID: 1078265865}
@@ -9547,6 +9655,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   interactionCondition: 
+  dialogueCgCanvas: {fileID: 0}
+  dialogueCgSpirte: {fileID: 0}
 --- !u!114 &2014537160
 MonoBehaviour:
   m_ObjectHideFlags: 0

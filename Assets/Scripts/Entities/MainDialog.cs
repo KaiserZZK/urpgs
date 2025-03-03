@@ -31,6 +31,8 @@ public class MainDialog : MonoBehaviour
     private bool optionsDisplayed = false; // flag to check if options are displayed
 
     public string interactionCondition; // specify condition
+    public Image dialogueCgCanvas;
+    public Sprite dialogueCgSpirte;
 
     private bool isCgScene ;
     private bool firstDialoguePlayed = false;

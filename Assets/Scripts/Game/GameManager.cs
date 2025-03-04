@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     // Sequential progression
     public bool collectedNotebook = false;
     public bool checkedTerminal = false;
+
+    public bool isFullScreenCgActive = false;
+    public GameObject activeFullScreenCgCanvas;
     
     void Awake()
     {

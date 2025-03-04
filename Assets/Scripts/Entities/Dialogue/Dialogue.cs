@@ -1,3 +1,6 @@
+using UnityEngine;
+using UnityEngine.UI;
+
 [System.Serializable]
 public class DialogueLine
 {
@@ -14,6 +17,9 @@ public class DialogueOption
     public string speaker;
     public string dialogueLines;
     public string shouldChangeScene;
+    public bool shouldDisplayFullScreenCg;
+    public Image fullScreenCgCanvas;
+    public Sprite fullscreenSprite;
 }
 
 [System.Serializable]

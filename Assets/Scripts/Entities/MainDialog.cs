@@ -57,6 +57,14 @@ public class MainDialog : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (GameManager.instance.isFullScreenCgActive && Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameManager.instance.activeFullScreenCgCanvas.gameObject.SetActive(false);
+            
+            GameManager.instance.isFullScreenCgActive = false;
+            GameManager.instance.activeFullScreenCgCanvas = null;
+        }
         
         // dialogue-related
         if (isCgScene || playerIsClose)
@@ -152,7 +160,6 @@ public class MainDialog : MonoBehaviour
                     else
                     {
                         currentDialogue = conditionalDialogues[0];
-                        MarkAsInteracted();
                     }
                 }
                 else
@@ -202,7 +209,7 @@ public class MainDialog : MonoBehaviour
             dialogueCgCanvas.gameObject.SetActive(false);
             // Set alpha to fully transparent
             Color cgColor = dialogueCgCanvas.color;
-            cgColor.a = 0f;
+            cgColor.a = 0f; 
             dialogueCgCanvas.color = cgColor;
         }
         
@@ -276,6 +283,17 @@ public class MainDialog : MonoBehaviour
         {
             // TODO @zk fix scene transition effect
             SceneController.sceneInstance.GoSpecifiedScene(option.shouldChangeScene);
+        }
+
+        if (option.shouldDisplayFullScreenCg)
+        {
+            // TODO @zk make a function of this 
+            option.fullScreenCgCanvas.gameObject.SetActive(true);
+            option.fullScreenCgCanvas.sprite = option.fullscreenSprite;
+            
+            GameManager.instance.isFullScreenCgActive = true;
+            GameManager.instance.activeFullScreenCgCanvas = option.fullScreenCgCanvas.gameObject;
+            MarkAsInteracted();
         }
         
         // defaulting behavior to do nothing & show next line 

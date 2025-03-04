@@ -15,14 +15,6 @@ public class MainPlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-        if (GameManager.instance.collectedNotebook && Input.GetKeyDown(KeyCode.R))
-        {
-            Debug.Log("Showing notebook content...");
-        }
-    }
-
     private void OnMovement(InputValue value) {
         movement = value.Get<Vector2>();
         if (movement.x != 0 || movement.y != 0) {

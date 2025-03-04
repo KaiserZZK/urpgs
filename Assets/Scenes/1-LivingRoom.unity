@@ -7811,6 +7811,12 @@ MonoBehaviour:
         speaker: 
         dialogueLines: 
         shouldChangeScene: 
+  - lines:
+    - speaker: Morphy
+      content: The terminal seems unresponsive. I suppose that means no updates at
+        the moment.
+      hasOptions: 0
+      options: []
   visualCue: {fileID: 1530892952}
   wordSpeed: 0.05
   fastWordSpeed: 0.01

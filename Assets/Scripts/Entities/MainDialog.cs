@@ -91,34 +91,7 @@ public class MainDialog : MonoBehaviour
                     }
                 }
             }
-
-            // press mouse on the object to trigger conversation;
-            // use raycast to ensure mouse on object;
-            // and make sure use mouse to continue and exit the conversation.
-            // if (Input.GetMouseButtonDown(0))a
-            // {
-            //     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            //     RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity, interactableLayer);
-
-            //     if (hit.collider != null && hit.collider.gameObject == gameObject)
-            //     {
-            //         TriggerConversation();
-            //     }
-            //     else if (dialoguePanel.activeInHierarchy)
-            //     {
-
-            //         if (index < currentDialogue.lines.Length - 1)
-            //         {
-            //             TriggerConversation();
-            //         }
-            //         else
-            //         {
-            //             RemoveText();
-            //         }
-
-            //     }
-            // }
-
+            
             if (Input.GetKeyDown(KeyCode.Q) && dialoguePanel.activeInHierarchy)
             {
                 RemoveText();
@@ -170,7 +143,11 @@ public class MainDialog : MonoBehaviour
                 MarkAsInteracted();
                 break;
             case "Terminal":
-                if (GameManager.instance.collectedNotebook)
+                if (GameManager.instance.checkedTerminal)
+                {
+                    currentDialogue = conditionalDialogues[1];
+                }
+                else if (GameManager.instance.collectedNotebook)
                 {
                     currentDialogue = conditionalDialogues[0];
                     MarkAsInteracted();

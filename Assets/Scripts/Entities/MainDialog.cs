@@ -91,7 +91,7 @@ public class MainDialog : MonoBehaviour
                     }
                 }
             }
-            
+
             if (Input.GetKeyDown(KeyCode.Q) && dialoguePanel.activeInHierarchy)
             {
                 RemoveText();
@@ -143,14 +143,17 @@ public class MainDialog : MonoBehaviour
                 MarkAsInteracted();
                 break;
             case "Terminal":
-                if (GameManager.instance.checkedTerminal)
+                if (GameManager.instance.collectedNotebook)
                 {
-                    currentDialogue = conditionalDialogues[1];
-                }
-                else if (GameManager.instance.collectedNotebook)
-                {
-                    currentDialogue = conditionalDialogues[0];
-                    MarkAsInteracted();
+                    if (GameManager.instance.checkedTerminal)
+                    {
+                        currentDialogue = conditionalDialogues[1];
+                    }
+                    else
+                    {
+                        currentDialogue = conditionalDialogues[0];
+                        MarkAsInteracted();
+                    }
                 }
                 else
                 {
@@ -203,7 +206,7 @@ public class MainDialog : MonoBehaviour
             dialogueCgCanvas.color = cgColor;
         }
         
-        if (GameManager.instance.collectedNotebook)
+        if (GameManager.instance.collectedNotebook && notebookInteractable != null)
         {
             notebookInteractable.gameObject.SetActive(false);
             
@@ -233,7 +236,6 @@ public class MainDialog : MonoBehaviour
             DisplayOptions(currentDialogue.lines[index].options);
             optionsDisplayed = true;
         }
-        MarkAsInteracted();
     }
 
     void DisplayOptions(DialogueOption[] options)

@@ -57,6 +57,14 @@ public class MainDialog : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (GameManager.instance.isFullScreenCgActive && Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameManager.instance.activeFullScreenCgCanvas.gameObject.SetActive(false);
+            
+            GameManager.instance.isFullScreenCgActive = false;
+            GameManager.instance.activeFullScreenCgCanvas = null;
+        }
         
         // dialogue-related
         if (isCgScene || playerIsClose)
@@ -91,33 +99,6 @@ public class MainDialog : MonoBehaviour
                     }
                 }
             }
-
-            // press mouse on the object to trigger conversation;
-            // use raycast to ensure mouse on object;
-            // and make sure use mouse to continue and exit the conversation.
-            // if (Input.GetMouseButtonDown(0))a
-            // {
-            //     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            //     RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity, interactableLayer);
-
-            //     if (hit.collider != null && hit.collider.gameObject == gameObject)
-            //     {
-            //         TriggerConversation();
-            //     }
-            //     else if (dialoguePanel.activeInHierarchy)
-            //     {
-
-            //         if (index < currentDialogue.lines.Length - 1)
-            //         {
-            //             TriggerConversation();
-            //         }
-            //         else
-            //         {
-            //             RemoveText();
-            //         }
-
-            //     }
-            // }
 
             if (Input.GetKeyDown(KeyCode.Q) && dialoguePanel.activeInHierarchy)
             {
@@ -172,8 +153,14 @@ public class MainDialog : MonoBehaviour
             case "Terminal":
                 if (GameManager.instance.collectedNotebook)
                 {
-                    currentDialogue = conditionalDialogues[0];
-                    MarkAsInteracted();
+                    if (GameManager.instance.checkedTerminal)
+                    {
+                        currentDialogue = conditionalDialogues[1];
+                    }
+                    else
+                    {
+                        currentDialogue = conditionalDialogues[0];
+                    }
                 }
                 else
                 {
@@ -222,11 +209,11 @@ public class MainDialog : MonoBehaviour
             dialogueCgCanvas.gameObject.SetActive(false);
             // Set alpha to fully transparent
             Color cgColor = dialogueCgCanvas.color;
-            cgColor.a = 0f;
+            cgColor.a = 0f; 
             dialogueCgCanvas.color = cgColor;
         }
         
-        if (GameManager.instance.collectedNotebook)
+        if (GameManager.instance.collectedNotebook && notebookInteractable != null)
         {
             notebookInteractable.gameObject.SetActive(false);
             
@@ -256,7 +243,6 @@ public class MainDialog : MonoBehaviour
             DisplayOptions(currentDialogue.lines[index].options);
             optionsDisplayed = true;
         }
-        MarkAsInteracted();
     }
 
     void DisplayOptions(DialogueOption[] options)
@@ -297,6 +283,17 @@ public class MainDialog : MonoBehaviour
         {
             // TODO @zk fix scene transition effect
             SceneController.sceneInstance.GoSpecifiedScene(option.shouldChangeScene);
+        }
+
+        if (option.shouldDisplayFullScreenCg)
+        {
+            // TODO @zk make a function of this 
+            option.fullScreenCgCanvas.gameObject.SetActive(true);
+            option.fullScreenCgCanvas.sprite = option.fullscreenSprite;
+            
+            GameManager.instance.isFullScreenCgActive = true;
+            GameManager.instance.activeFullScreenCgCanvas = option.fullScreenCgCanvas.gameObject;
+            MarkAsInteracted();
         }
         
         // defaulting behavior to do nothing & show next line 

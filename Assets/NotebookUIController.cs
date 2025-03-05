@@ -23,6 +23,10 @@ public class NotebookUIController : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.R))
             {
+                if (GameManager.instance.notebookNotification.activeSelf)
+                {
+                    GameManager.instance.notebookNotification.SetActive(false);
+                }
                 icon.SetActive(!icon.activeSelf);
                 notebookCanvas.SetActive(!notebookCanvas.activeSelf);
             }

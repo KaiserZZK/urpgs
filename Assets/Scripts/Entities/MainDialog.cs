@@ -348,6 +348,9 @@ public class MainDialog : MonoBehaviour
                 break;
             case "Terminal":
                 GameManager.instance.checkedTerminal = true;
+                GameManager.instance.notebookNotification.SetActive(true);
+                GameManager.instance.UncoverNotebookTabName("Institute");
+                GameManager.instance.AddRuleToNotebook("Institute", 0, 3);
                 break;
         }
     }

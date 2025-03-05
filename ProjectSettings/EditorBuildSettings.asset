@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/1-LivingRoom.unity
     guid: 03a997bd305044351855bee5f3575078
   - enabled: 1
+    path: Assets/Scenes/2-Pantry.unity
+    guid: 5b5ec67f88da94507b15f77c167ab988
+  - enabled: 0
     path: Assets/Scenes/corridor1.unity
     guid: 5ee3a3d3bc8f1442abb45e3550c9f3f0
   m_configObjects: {}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 [Serializable]  
@@ -115,25 +116,27 @@ public class GameManager : MonoBehaviour
         {
             case "Institute":
                 textTransform = notebookUI.transform.Find("Menu/Pages/InstitutePage/InstituteTextMask/InstituteText");
+
                 if (textTransform != null)
                 {
-                    TMP_Text tmpText = textTransform.GetComponent<TMP_Text>();
-                    if (tmpText != null)
+                    Debug.Log("found it");
+                    Text legacyText = textTransform.GetComponent<Text>(); // Using legacy Text component
+                    if (legacyText != null)
                     {
                         // If text is empty, set the initial sentence
-                        if (string.IsNullOrWhiteSpace(tmpText.text))
+                        if (string.IsNullOrWhiteSpace(legacyText.text))
                         {
-                            tmpText.text = "A list of rules gathered from notifications by the Institute...\n";
+                            legacyText.text = "A list of rules gathered from notifications by the Institute...\n\n";
                         }
 
                         // Find rules from the dictionary
                         List<string> rules = rulesBySources[0].rules;
 
+                        // Add the rules to the legacy text component
                         for (int i = startIndex; i < endIndex; i++)
                         {
-                            tmpText.text += rules[i] + "\n";
+                            legacyText.text += rules[i] + "\n\n";
                         }
-                        
                     }
                 }
                 break;

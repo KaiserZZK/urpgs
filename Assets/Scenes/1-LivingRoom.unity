@@ -1333,7 +1333,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1523.8, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1523.8, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &390259073
@@ -8185,7 +8185,7 @@ MonoBehaviour:
     m_Bits: 0
   interactionCondition: 
   dialogueCgCanvas: {fileID: 0}
-  dialogueCgSpirte: {fileID: 0}
+  dialogueCgSprites: []
   notebookInteractable: {fileID: 0}
 --- !u!114 &1078265867
 MonoBehaviour:
@@ -8906,34 +8906,48 @@ MonoBehaviour:
     - speaker: Morphy
       content: My notebook. Here it is.
       hasOptions: 0
+      cgIndex: 1
+      markAtThisLine: 0
       options: []
     - speaker: Morphy
       content: "This emblem always makes me recall receiving that assignment letter
         at my university\u2019s office\u2014"
       hasOptions: 0
+      cgIndex: 1
+      markAtThisLine: 0
       options: []
     - speaker: Morphy
       content: 'to develop an intelligent system for strategic planning for the government. '
       hasOptions: 0
+      cgIndex: 1
+      markAtThisLine: 0
       options: []
     - speaker: Morphy
       content: I remember my composed response, and my inner ecstasy concealed by
         it.
       hasOptions: 0
+      cgIndex: 1
+      markAtThisLine: 0
       options: []
     - speaker: Morphy
       content: My dream (or obsession?) could finally materialize with resources
         of a national institution.
       hasOptions: 0
+      cgIndex: 1
+      markAtThisLine: 0
       options: []
     - speaker: Morphy
       content: "\u2026 The Institute of Control and Optimization Sciences. My life\u2019s
         meaning depends on my research HERE."
       hasOptions: 0
+      cgIndex: 1
+      markAtThisLine: 0
       options: []
     - speaker: Morphy
       content: I can open my notebook with (R) when I feel like reading it.
       hasOptions: 0
+      cgIndex: 1
+      markAtThisLine: 1
       options: []
   conditionalDialogues: []
   visualCue: {fileID: 1530892952}
@@ -8945,7 +8959,8 @@ MonoBehaviour:
     m_Bits: 0
   interactionCondition: Notebook
   dialogueCgCanvas: {fileID: 952093179}
-  dialogueCgSpirte: {fileID: 21300000, guid: b9a79670921f74b4cb1e63d437bddfdb, type: 3}
+  dialogueCgSprites:
+  - {fileID: 21300000, guid: b9a79670921f74b4cb1e63d437bddfdb, type: 3}
   notebookInteractable: {fileID: 1410386458}
 --- !u!70 &1410386463
 CapsuleCollider2D:
@@ -9025,27 +9040,25 @@ MonoBehaviour:
     - speaker: Morphy
       content: Don't think I'd wanna leave without at least having some information...
       hasOptions: 0
+      cgIndex: 0
+      markAtThisLine: 0
       options: []
   conditionalDialogues:
   - lines:
     - speaker: Morphy
       content: Seems to be a door; not sure where it leads to though.
       hasOptions: 1
+      cgIndex: 0
+      markAtThisLine: 0
       options:
       - optionText: Use door
         speaker: 
         dialogueLines: 
         shouldChangeScene: 2-Pantry
-        shouldDisplayFullScreenCg: 0
-        fullScreenCgCanvas: {fileID: 0}
-        fullscreenSprite: {fileID: 0}
       - optionText: Nevermind
         speaker: 
         dialogueLines: 
         shouldChangeScene: 
-        shouldDisplayFullScreenCg: 0
-        fullScreenCgCanvas: {fileID: 0}
-        fullscreenSprite: {fileID: 0}
   visualCue: {fileID: 1530892952}
   wordSpeed: 0.05
   fastWordSpeed: 0.01
@@ -9055,7 +9068,7 @@ MonoBehaviour:
     m_Bits: 0
   interactionCondition: Exit
   dialogueCgCanvas: {fileID: 0}
-  dialogueCgSpirte: {fileID: 0}
+  dialogueCgSprites: []
   notebookInteractable: {fileID: 0}
 --- !u!61 &1424030110
 BoxCollider2D:
@@ -9353,36 +9366,38 @@ MonoBehaviour:
       content: Seems to be some sort of terminal... I only have vague memories of
         how to use that.
       hasOptions: 0
+      cgIndex: 0
+      markAtThisLine: 0
       options: []
     - speaker: Morphy
       content: My notebook should help--better find that first before doing anything.
       hasOptions: 0
+      cgIndex: 0
+      markAtThisLine: 0
       options: []
   conditionalDialogues:
   - lines:
     - speaker: Morphy
       content: A standard-issue terminal from the Institute, check for updates?
       hasOptions: 1
+      cgIndex: 0
+      markAtThisLine: 0
       options:
       - optionText: Yes.
         speaker: 
         dialogueLines: 
         shouldChangeScene: 
-        shouldDisplayFullScreenCg: 1
-        fullScreenCgCanvas: {fileID: 2115062814}
-        fullscreenSprite: {fileID: 21300000, guid: 2a849719f50aa4392a9b0000bc874530, type: 3}
       - optionText: Not now.
         speaker: 
         dialogueLines: 
         shouldChangeScene: 
-        shouldDisplayFullScreenCg: 0
-        fullScreenCgCanvas: {fileID: 0}
-        fullscreenSprite: {fileID: 0}
   - lines:
     - speaker: Morphy
       content: The terminal seems unresponsive. I suppose that means no updates at
         the moment.
       hasOptions: 0
+      cgIndex: 0
+      markAtThisLine: 0
       options: []
   visualCue: {fileID: 1530892952}
   wordSpeed: 0.05
@@ -9393,7 +9408,7 @@ MonoBehaviour:
     m_Bits: 0
   interactionCondition: Terminal
   dialogueCgCanvas: {fileID: 0}
-  dialogueCgSpirte: {fileID: 0}
+  dialogueCgSprites: []
   notebookInteractable: {fileID: 1410386458}
 --- !u!212 &1528675430
 SpriteRenderer:
@@ -12137,7 +12152,7 @@ MonoBehaviour:
     m_Bits: 0
   interactionCondition: 
   dialogueCgCanvas: {fileID: 0}
-  dialogueCgSpirte: {fileID: 0}
+  dialogueCgSprites: []
   notebookInteractable: {fileID: 0}
 --- !u!114 &2014537160
 MonoBehaviour:
@@ -12259,7 +12274,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 236672721}
   m_HandleRect: {fileID: 236672720}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

@@ -7,6 +7,8 @@ public class DialogueLine
     public string speaker;
     public string content;
     public bool hasOptions;
+    public int cgIndex;
+    public bool markAtThisLine;
     public DialogueOption[] options;
 }
 
@@ -17,9 +19,8 @@ public class DialogueOption
     public string speaker;
     public string dialogueLines;
     public string shouldChangeScene;
-    public bool shouldDisplayFullScreenCg;
-    public Image fullScreenCgCanvas;
-    public Sprite fullscreenSprite;
+    // TODO @zk implement option-nested dialogue (use cases e.g. terminal CG)
+    // public bool shouldDisplayFullScreenCg;
 }
 
 [System.Serializable]

@@ -32,7 +32,7 @@ public class MainDialog : MonoBehaviour
 
     public string interactionCondition; // specify condition
     public Image dialogueCgCanvas;
-    public Sprite dialogueCgSpirte;
+    public Sprite[] dialogueCgSprites;
 
     private bool isCgScene ;
     private bool firstDialoguePlayed = false;
@@ -116,23 +116,23 @@ public class MainDialog : MonoBehaviour
 
     void TriggerConversation()
     {
+        // Show index-specific CG when available
+        if (currentDialogue.lines[index].cgIndex > 0)
+        {
+            ShowCurrentDialogueCgCanvas();
+        }
+        else
+        {
+            if (dialogueCgCanvas.IsActive())
+            {
+                HideCurrentDialogueCgCanvas();
+            }
+        }
+        
         if (!dialoguePanel.activeInHierarchy)
         {
             CheckInteractionCondition();
             dialoguePanel.SetActive(true);
-            
-            // TODO @zk BONUS: make index-specific (CG only showing during specific sentences in dialogue)
-            // Show CG if available
-            if (dialogueCgCanvas != null && dialogueCgSpirte != null)
-            {
-                dialogueCgCanvas.gameObject.SetActive(true);
-                dialogueCgCanvas.sprite = dialogueCgSpirte;
-            
-                // Set alpha to fully visible
-                Color cgColor = dialogueCgCanvas.color;
-                cgColor.a = 1f; 
-                dialogueCgCanvas.color = cgColor;
-            }
             
             typingCoroutine = StartCoroutine(Typing(currentDialogue.lines.Length > 1));
         }
@@ -147,9 +147,6 @@ public class MainDialog : MonoBehaviour
     {
         switch (interactionCondition)
         {
-            case "Notebook":
-                MarkAsInteracted();
-                break;
             case "Terminal":
                 if (GameManager.instance.collectedNotebook)
                 {
@@ -196,22 +193,19 @@ public class MainDialog : MonoBehaviour
             StopCoroutine(typingCoroutine);
             typingCoroutine = null;
         }
+        
+        // Hide index-specific CG if available
+        if (dialogueCgCanvas.IsActive())
+        {
+            HideCurrentDialogueCgCanvas();
+        }
+        
         dialogueText.text = "";
         speakerText.text = "";
         index = 0;
         dialoguePanel.SetActive(false);
         optionsPanel.gameObject.SetActive(false); // Deactivate options panel
         isFastTyping = false;
-        
-        // Hide CG when dialogue is closed
-        if (dialogueCgCanvas != null)
-        {
-            dialogueCgCanvas.gameObject.SetActive(false);
-            // Set alpha to fully transparent
-            Color cgColor = dialogueCgCanvas.color;
-            cgColor.a = 0f; 
-            dialogueCgCanvas.color = cgColor;
-        }
         
         if (GameManager.instance.collectedNotebook && notebookInteractable != null)
         {
@@ -242,6 +236,11 @@ public class MainDialog : MonoBehaviour
         if (currentDialogue.lines[index].hasOptions) {
             DisplayOptions(currentDialogue.lines[index].options);
             optionsDisplayed = true;
+        }
+
+        if (currentDialogue.lines[index].markAtThisLine)
+        {
+            MarkAsInteracted();
         }
     }
 
@@ -284,17 +283,6 @@ public class MainDialog : MonoBehaviour
             // TODO @zk fix scene transition effect
             SceneController.sceneInstance.GoSpecifiedScene(option.shouldChangeScene);
         }
-
-        if (option.shouldDisplayFullScreenCg)
-        {
-            // TODO @zk make a function of this 
-            option.fullScreenCgCanvas.gameObject.SetActive(true);
-            option.fullScreenCgCanvas.sprite = option.fullscreenSprite;
-            
-            GameManager.instance.isFullScreenCgActive = true;
-            GameManager.instance.activeFullScreenCgCanvas = option.fullScreenCgCanvas.gameObject;
-            MarkAsInteracted();
-        }
         
         // defaulting behavior to do nothing & show next line 
         NextLine();
@@ -304,8 +292,24 @@ public class MainDialog : MonoBehaviour
     {
         if (index < currentDialogue.lines.Length - 1)
         {
+            
+            
             bool hasNextLine = (index < currentDialogue.lines.Length - 2);
             index++;
+            
+            // Show index-specific CG when available
+            if (currentDialogue.lines[index].cgIndex > 0)
+            {
+                ShowCurrentDialogueCgCanvas();
+            }
+            else
+            {
+                if (dialogueCgCanvas.IsActive())
+                {
+                    HideCurrentDialogueCgCanvas();
+                }
+            }
+            
             dialogueText.text = "";
             speakerText.text = "";
             optionsPanel.gameObject.SetActive(false);
@@ -353,5 +357,26 @@ public class MainDialog : MonoBehaviour
                 GameManager.instance.AddRuleToNotebook("Institute", 0, 3);
                 break;
         }
+    }
+
+    private void ShowCurrentDialogueCgCanvas()
+    {
+        int currentCgIndex = currentDialogue.lines[index].cgIndex-1;
+        dialogueCgCanvas.gameObject.SetActive(true);
+        dialogueCgCanvas.sprite = dialogueCgSprites[currentCgIndex];
+                
+        // Set alpha to fully visible
+        Color cgColor = dialogueCgCanvas.color;
+        cgColor.a = 1f; 
+        dialogueCgCanvas.color = cgColor;
+    }
+
+    private void HideCurrentDialogueCgCanvas()
+    {
+        dialogueCgCanvas.gameObject.SetActive(false);
+        // Set alpha to fully transparent
+        Color cgColor = dialogueCgCanvas.color;
+        cgColor.a = 0f; 
+        dialogueCgCanvas.color = cgColor;
     }
 }

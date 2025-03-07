@@ -19,8 +19,7 @@ public class DialogueOption
     public string speaker;
     public string dialogueLines;
     public string shouldChangeScene;
-    // TODO @zk implement option-nested dialogue (use cases e.g. terminal CG)
-    // public bool shouldDisplayFullScreenCg;
+    public bool displayAdditionalDialogue;
 }
 
 [System.Serializable]

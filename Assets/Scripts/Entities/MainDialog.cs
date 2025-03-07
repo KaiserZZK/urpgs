@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
+using Debug = UnityEngine.Debug;
 
 public class MainDialog : MonoBehaviour
 {
@@ -284,8 +286,16 @@ public class MainDialog : MonoBehaviour
             SceneController.sceneInstance.GoSpecifiedScene(option.shouldChangeScene);
         }
         
-        // defaulting behavior to do nothing & show next line 
-        NextLine();
+        if (option.displayAdditionalDialogue)
+        {
+            NextLine();
+        }
+        else
+        {
+            optionsDisplayed = false; 
+            RemoveText();
+
+        }
     }
 
     public void NextLine()

@@ -9055,10 +9055,12 @@ MonoBehaviour:
         speaker: 
         dialogueLines: 
         shouldChangeScene: 2-Pantry
+        displayAdditionalDialogue: 0
       - optionText: Nevermind
         speaker: 
         dialogueLines: 
         shouldChangeScene: 
+        displayAdditionalDialogue: 0
   visualCue: {fileID: 1530892952}
   wordSpeed: 0.05
   fastWordSpeed: 0.01
@@ -9387,10 +9389,38 @@ MonoBehaviour:
         speaker: 
         dialogueLines: 
         shouldChangeScene: 
+        displayAdditionalDialogue: 0
       - optionText: Not now.
         speaker: 
         dialogueLines: 
         shouldChangeScene: 
+        displayAdditionalDialogue: 0
+    - speaker: Morphy
+      content: 'Unsettling protocols. What happened? '
+      hasOptions: 0
+      cgIndex: 1
+      markAtThisLine: 0
+      options: []
+    - speaker: Morphy
+      content: "Violating them\u2013I\u2019m uncertain about the consequences. Better
+        to comply."
+      hasOptions: 0
+      cgIndex: 1
+      markAtThisLine: 0
+      options: []
+    - speaker: Morphy
+      content: In any case, I am marking them down in my notebook first.
+      hasOptions: 0
+      cgIndex: 1
+      markAtThisLine: 1
+      options: []
+    - speaker: Morphy
+      content: Before I begin my research, I should make some coffee in the Break
+        Lounge.
+      hasOptions: 0
+      cgIndex: 0
+      markAtThisLine: 0
+      options: []
   - lines:
     - speaker: Morphy
       content: The terminal seems unresponsive. I suppose that means no updates at
@@ -9407,8 +9437,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   interactionCondition: Terminal
-  dialogueCgCanvas: {fileID: 0}
-  dialogueCgSprites: []
+  dialogueCgCanvas: {fileID: 952093179}
+  dialogueCgSprites:
+  - {fileID: 21300000, guid: 2a849719f50aa4392a9b0000bc874530, type: 3}
   notebookInteractable: {fileID: 1410386458}
 --- !u!212 &1528675430
 SpriteRenderer:

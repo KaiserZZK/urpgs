@@ -119,7 +119,6 @@ public class GameManager : MonoBehaviour
 
                 if (textTransform != null)
                 {
-                    Debug.Log("found it");
                     Text legacyText = textTransform.GetComponent<Text>(); // Using legacy Text component
                     if (legacyText != null)
                     {

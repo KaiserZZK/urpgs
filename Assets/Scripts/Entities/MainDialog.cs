@@ -125,7 +125,7 @@ public class MainDialog : MonoBehaviour
         }
         else
         {
-            if (dialogueCgCanvas.IsActive())
+            if (dialogueCgCanvas != null && dialogueCgCanvas.IsActive())
             {
                 HideCurrentDialogueCgCanvas();
             }
@@ -197,7 +197,7 @@ public class MainDialog : MonoBehaviour
         }
         
         // Hide index-specific CG if available
-        if (dialogueCgCanvas.IsActive())
+        if (dialogueCgCanvas != null && dialogueCgCanvas.IsActive())
         {
             HideCurrentDialogueCgCanvas();
         }
@@ -314,7 +314,7 @@ public class MainDialog : MonoBehaviour
             }
             else
             {
-                if (dialogueCgCanvas.IsActive())
+                if (dialogueCgCanvas != null && dialogueCgCanvas.IsActive())
                 {
                     HideCurrentDialogueCgCanvas();
                 }

@@ -1333,7 +1333,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1523.8, y: 0}
   m_SizeDelta: {x: 1523.8, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &390259073
@@ -8904,49 +8904,49 @@ MonoBehaviour:
   defaultDialogue:
     lines:
     - speaker: Morphy
-      content: My notebook. Here it is.
+      content: This emblem.
       hasOptions: 0
       cgIndex: 1
       markAtThisLine: 0
       options: []
     - speaker: Morphy
-      content: "This emblem always makes me recall receiving that assignment letter
-        at my university\u2019s office\u2014"
+      content: "It always makes me recall receiving that assignment letter at my
+        university\u2019s office\u2014"
       hasOptions: 0
-      cgIndex: 1
+      cgIndex: 2
       markAtThisLine: 0
       options: []
     - speaker: Morphy
       content: 'to develop an intelligent system for strategic planning for the government. '
       hasOptions: 0
-      cgIndex: 1
+      cgIndex: 2
       markAtThisLine: 0
       options: []
     - speaker: Morphy
       content: I remember my composed response, and my inner ecstasy concealed by
         it.
       hasOptions: 0
-      cgIndex: 1
+      cgIndex: 2
       markAtThisLine: 0
       options: []
     - speaker: Morphy
       content: My dream (or obsession?) could finally materialize with resources
         of a national institution.
       hasOptions: 0
-      cgIndex: 1
+      cgIndex: 2
       markAtThisLine: 0
       options: []
     - speaker: Morphy
       content: "\u2026 The Institute of Control and Optimization Sciences. My life\u2019s
         meaning depends on my research HERE."
       hasOptions: 0
-      cgIndex: 1
+      cgIndex: 2
       markAtThisLine: 0
       options: []
     - speaker: Morphy
       content: I can open my notebook with (R) when I feel like reading it.
       hasOptions: 0
-      cgIndex: 1
+      cgIndex: 2
       markAtThisLine: 1
       options: []
   conditionalDialogues: []
@@ -8960,6 +8960,7 @@ MonoBehaviour:
   interactionCondition: Notebook
   dialogueCgCanvas: {fileID: 952093179}
   dialogueCgSprites:
+  - {fileID: 21300000, guid: 77ef7c16a7b574729a8b4dc67af9db6c, type: 3}
   - {fileID: 21300000, guid: b9a79670921f74b4cb1e63d437bddfdb, type: 3}
   notebookInteractable: {fileID: 1410386458}
 --- !u!70 &1410386463
@@ -9389,7 +9390,7 @@ MonoBehaviour:
         speaker: 
         dialogueLines: 
         shouldChangeScene: 
-        displayAdditionalDialogue: 0
+        displayAdditionalDialogue: 1
       - optionText: Not now.
         speaker: 
         dialogueLines: 
@@ -12305,7 +12306,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 236672721}
   m_HandleRect: {fileID: 236672720}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

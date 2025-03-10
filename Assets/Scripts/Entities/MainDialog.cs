@@ -167,6 +167,7 @@ public class MainDialog : MonoBehaviour
                 }
                 break;
             case "Exit":
+                // TODO @zk exit improvements: 1) bidirectional; 2) more room; 3) set spawn location in room 
                 if (GameManager.instance.checkedTerminal)
                 {
                     // TODO @zk could add a known vs. unknown state as to where the door leads to
